@@ -49,15 +49,15 @@ namespace NewBookModels
             fieldConfirmPassword.SendKeys("Qwerty123!");
 
             IWebElement fieldMobile = driver.FindElement(By.CssSelector("[name=phone_number]"));
-            fieldMobile.SendKeys("666.666.1366");
+            fieldMobile.SendKeys("666.666.1312");
 
             IWebElement buttonNext = driver.FindElement(By.CssSelector("[type=submit]"));
             buttonNext.Click();
 
             IWebElement fieldCompanyName = driver.FindElement(By.CssSelector("[name=company_name]"));
-            fieldCompanyName.SendKeys("DevEd");
+            fieldCompanyName.SendKeys("Shopopalo");
             IWebElement fieldCompanyURL = driver.FindElement(By.CssSelector("[name=company_website]"));
-            fieldCompanyURL.SendKeys("DevEd.fake.ua");
+            fieldCompanyURL.SendKeys("Shopopalo.fake.ua");
 
             string companyLocation = "2453 Lombard St, San Francisco, CA 94123, USA";
             IWebElement fieldAddress = driver.FindElement(By.CssSelector("input[name=\"location\"]"));
@@ -73,61 +73,63 @@ namespace NewBookModels
             buttonIndustry.SendKeys(Keys.ArrowDown);
             Thread.Sleep(500);
             buttonIndustry.SendKeys(Keys.Enter);
-            IWebElement buttonFinish = driver.FindElement(By.CssSelector("[type=submit]"));
-            buttonFinish.Click();
 
+            //IWebElement buttonFinish = driver.FindElement(By.CssSelector("[type=submit]"));
+            //buttonFinish.Click();
+
+            //Thread.Sleep(1500);
+
+            ////проверка, сравниваем УРЛ
             //string actualResultURL = driver.Url;
             //Assert.AreEqual("https://newbookmodels.com/explore", actualResultURL);
-
-            Assert.Pass();
         }
 
-        [Test]
-        public void Authorization()
-        {
-            IWebElement buttonLogInFooter = driver.FindElement(By.CssSelector("[class=\"Navbar__navLink--3lL7S Navbar__navLinkSingle--3x6Lx Navbar__login--28b35 \"]"));
-            buttonLogInFooter.Click();
+        //[Test]
+        //public void Authorization()
+        //{
+        //    IWebElement buttonLogInFooter = driver.FindElement(By.CssSelector("[class=\"Navbar__navLink--3lL7S Navbar__navLinkSingle--3x6Lx Navbar__login--28b35 \"]"));
+        //    buttonLogInFooter.Click();
 
-            IWebElement fieldEmailAdress = driver.FindElement(By.CssSelector("[class=\"Input__input--_88SI Input__themeNewbook--1IRjd Input__fontRegular--2SStp\"]"));
-            fieldEmailAdress.SendKeys("newMail02112021230109@fake.com");
+        //    IWebElement fieldEmailAdress = driver.FindElement(By.CssSelector("[class=\"Input__input--_88SI Input__themeNewbook--1IRjd Input__fontRegular--2SStp\"]"));
+        //    fieldEmailAdress.SendKeys("newMail02112021230109@fake.com");
 
-            IWebElement fieldPassword = driver.FindElement(By.CssSelector("[name=password]"));
-            fieldPassword.SendKeys("Qwerty123!");
+        //    IWebElement fieldPassword = driver.FindElement(By.CssSelector("[name=password]"));
+        //    fieldPassword.SendKeys("Qwerty123!");
 
-            IWebElement buttonLogIn = driver.FindElement(By.CssSelector("[type=submit]"));
-            buttonLogIn.Click();
+        //    IWebElement buttonLogIn = driver.FindElement(By.CssSelector("[type=submit]"));
+        //    buttonLogIn.Click();
 
-            Assert.Pass();
-        }
+        //    Assert.Pass();
+        //}
 
-        [Test]
-        public void LogOut()
-        {
-            IWebElement buttonLogInFooter = driver.FindElement(By.CssSelector("[class=\"Navbar__navLink--3lL7S Navbar__navLinkSingle--3x6Lx Navbar__login--28b35 \"]"));
-            buttonLogInFooter.Click();
+        //[Test]
+        //public void LogOut()
+        //{
+        //    IWebElement buttonLogInFooter = driver.FindElement(By.CssSelector("[class=\"Navbar__navLink--3lL7S Navbar__navLinkSingle--3x6Lx Navbar__login--28b35 \"]"));
+        //    buttonLogInFooter.Click();
 
-            IWebElement fieldEmailAdress = driver.FindElement(By.CssSelector("[class=\"Input__input--_88SI Input__themeNewbook--1IRjd Input__fontRegular--2SStp\"]"));
-            fieldEmailAdress.SendKeys("newMail02112021230109@fake.com");
+        //    IWebElement fieldEmailAdress = driver.FindElement(By.CssSelector("[class=\"Input__input--_88SI Input__themeNewbook--1IRjd Input__fontRegular--2SStp\"]"));
+        //    fieldEmailAdress.SendKeys("newMail02112021230109@fake.com");
 
-            IWebElement fieldPassword = driver.FindElement(By.CssSelector("[name=password]"));
-            fieldPassword.SendKeys("Qwerty123!");
+        //    IWebElement fieldPassword = driver.FindElement(By.CssSelector("[name=password]"));
+        //    fieldPassword.SendKeys("Qwerty123!");
 
-            IWebElement buttonLogIn = driver.FindElement(By.CssSelector("[type=submit]"));
-            buttonLogIn.Click();
+        //    IWebElement buttonLogIn = driver.FindElement(By.CssSelector("[type=submit]"));
+        //    buttonLogIn.Click();
 
-            IWebElement buttonMyAvaFooter = driver.FindElement(By.CssSelector("[class=\"AvatarClient__avatar--3TC7_\"]"));
-            buttonMyAvaFooter.Click();
+        //    IWebElement buttonMyAvaFooter = driver.FindElement(By.CssSelector("[class=\"AvatarClient__avatar--3TC7_\"]"));
+        //    buttonMyAvaFooter.Click();
 
-            IWebElement buttonLodOutAcc = driver.FindElement(By.CssSelector("[class=\"link link_type_logout link_active\"]"));
-            buttonLodOutAcc.Click();
+        //    IWebElement buttonLodOutAcc = driver.FindElement(By.CssSelector("[class=\"link link_type_logout link_active\"]"));
+        //    buttonLodOutAcc.Click();
 
-            Assert.Pass();
-        }
+        //    Assert.Pass();
+        //}
 
-        [TearDown]
-        public void After()
-        {
-            driver.Quit();
-        }
+        //[TearDown]
+        //public void After()
+        //{
+        //    driver.Quit();
+        //}
     }
 }
