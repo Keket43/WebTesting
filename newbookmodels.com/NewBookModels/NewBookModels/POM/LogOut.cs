@@ -11,7 +11,8 @@ namespace NewBookModels.POM
     {
         private readonly IWebDriver _driver;
 
-
+        private readonly By _fieldEmail = By.CssSelector("[name=email]");
+        private readonly By _fieldPassword = By.CssSelector("[name=password]");
 
         //IWebElement buttonLogInFooter = driver.FindElement(By.CssSelector("[class=\"Navbar__navLink--3lL7S Navbar__navLinkSingle--3x6Lx Navbar__login--28b35 \"]"));
         //buttonLogInFooter.Click();
@@ -36,6 +37,7 @@ namespace NewBookModels.POM
             _driver = webDriver;
         }
 
+        //example:
         public LogOut GoToRegistrationPages()
         {
             _driver.Navigate().GoToUrl("https://newbookmodels.com/");

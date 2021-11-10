@@ -31,6 +31,8 @@ namespace NewBookModels.POM
             _driver = webDriver;
         }
 
+
+        //example:
         public Authorization GoToRegistrationPages()
         {
             _driver.Navigate().GoToUrl("https://newbookmodels.com/");
