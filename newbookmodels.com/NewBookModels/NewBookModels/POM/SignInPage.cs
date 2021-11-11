@@ -1,9 +1,5 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace NewBookModels.POM
 {   
@@ -15,10 +11,15 @@ namespace NewBookModels.POM
         private readonly By _passwordField = By.CssSelector("input[type=password]");
         private readonly By _loginButton = By.CssSelector("button[class^=SignInForm__submitButton]");
         private readonly By _errorMessage = By.XPath("//*[contains(@class, 'SignInForm__submitButton')]/../../div[contains(@class, 'PageFormLayout__errors--3dFcq')]/div/div");
-                
+        private readonly By _verifSignInPage = By.CssSelector("div[class='PageCard__title--3_OBR']");
+
         public SignInPage(IWebDriver webDriver)
         {
             _driver = webDriver;
+        }
+        public string SignInPageVerif()
+        {
+            return _driver.FindElement(_verifSignInPage).Text;
         }
 
         public SignInPage GoToSignInPage()
@@ -26,7 +27,7 @@ namespace NewBookModels.POM
             _driver.Navigate().GoToUrl("https://newbookmodels.com/auth/signin");
             return this;
         }
-
+        
         public SignInPage InputEmailField(string email)
         {
             _driver.FindElement(_emailField).SendKeys(email);
@@ -37,8 +38,7 @@ namespace NewBookModels.POM
         {
             _driver.FindElement(_passwordField).SendKeys(password);
             return this;
-        }
-        //можно так записывать, красивее:
+        }        
         public void ClickLoginButton() =>
             _driver.FindElement(_loginButton).Click();
 

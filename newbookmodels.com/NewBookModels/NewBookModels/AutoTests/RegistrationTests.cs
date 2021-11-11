@@ -3,6 +3,7 @@ using NewBookModels.POM;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using NewBookModels;
 
 namespace NewBookModels.AutoTests
 {
@@ -34,9 +35,7 @@ namespace NewBookModels.AutoTests
             registrationPage.GoToRegistrationPages()
                 .InputFirstName(name)
                 .InputLastName("Juchek")
-                .InputEmail(GenerateEmail.genEmail())
-                //string now = DateTime.Now.ToString("ddMMyyyyhhmmss");
-                //string name = now + "@fake.com";
+                .InputEmail(Helper.GenEmail())
                 .InputPassword("Qwerty123!")
                 .InputConfirmPassword("Qwerty123!")
                 .InputPhoneNumber("666.666.1312")
@@ -63,7 +62,7 @@ namespace NewBookModels.AutoTests
             registrationPage.GoToRegistrationPages()
                 .InputFirstName(firstName)
                 .InputLastName(lastName)
-                .InputEmail(GenerateEmail.genEmail())
+                .InputEmail(Helper.GenEmail())
                 .InputPassword(password)
                 .InputConfirmPassword(confirmPassword)
                 .InputPhoneNumber(phone)

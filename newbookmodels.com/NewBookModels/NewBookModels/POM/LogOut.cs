@@ -24,6 +24,7 @@ namespace NewBookModels.POM
         public LogOut ClickButtonFooterLogIn()
         {
             _driver.FindElement(_buttonLogInFooter).Click();
+            return this;
         }
         public LogOut InputEmailAdress(string emailAdress)
         {
@@ -44,10 +45,12 @@ namespace NewBookModels.POM
         public LogOut ClickButtonMyAvaFooter()
         {
             _driver.FindElement(_buttonMyAvaFooter).Click();
+            return this;
         }
         public LogOut ClickNextButton()
         {
             _driver.FindElement(_buttonLodOutAcc).Click();
+            return this;
         }
         public void ClickOnFinishRegistration() => _driver.FindElement(_buttonLogIn).Click();
     }
