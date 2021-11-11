@@ -1,10 +1,6 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace NewBookModels.POM
 {
@@ -25,7 +21,9 @@ namespace NewBookModels.POM
         private readonly By _companyLocation = By.CssSelector("input[name=\"location\"]");
         private readonly By _buttonIndustry = By.CssSelector("[name=industry]");       
         private readonly By _buttonFinish = By.CssSelector("[type=submit]");
-              
+
+        private readonly By _errorByLastName = By.XPath("//div[@class='SignupFormLayout__fieldRow--bGt25']//input[@name='last_name']/../div[@class = 'FormErrorText__error---nzyq']");
+
 
         public RegistrationPage(IWebDriver webDriver)
         {
@@ -101,9 +99,9 @@ namespace NewBookModels.POM
         public RegistrationPage InputCompanyAddress(string address)
         {
             _driver.FindElement(_companyLocation).SendKeys(address);
-            Thread.Sleep(1500);
+            Thread.Sleep(2000);
             _driver.FindElement(_companyLocation).SendKeys(Keys.ArrowDown);
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             _driver.FindElement(_companyLocation).SendKeys(Keys.Enter);
             return this;
         }
@@ -111,16 +109,18 @@ namespace NewBookModels.POM
         public RegistrationPage InputCompanyIndustry(int i)
         {
             _driver.FindElement(_buttonIndustry).Click();
-            Thread.Sleep(1500);
+            Thread.Sleep(2000);
             for (int counter = 0; counter < i; counter++)
             {
                 _driver.FindElement(_buttonIndustry).SendKeys(Keys.ArrowDown);
             }
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             _driver.FindElement(_buttonIndustry).SendKeys(Keys.Enter);
             return this;
         }
 
         public void ClickOnFinishRegistration() => _driver.FindElement(_buttonFinish).Click();
+
+        public string ErrorTextAboutLastName() => _driver.FindElement(_errorByLastName).Text;
     }
 }

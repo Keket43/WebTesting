@@ -1,9 +1,5 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace NewBookModels.POM
 {
@@ -11,44 +7,48 @@ namespace NewBookModels.POM
     {
         private readonly IWebDriver _driver;
 
-        private readonly By _fieldEmail = By.CssSelector("[name=email]");
+        private readonly By _buttonLogInFooter = By.CssSelector("[class=\"Navbar__navLink--3lL7S Navbar__navLinkSingle--3x6Lx Navbar__login--28b35 \"]");
+        private readonly By _fieldEmailAdress = By.CssSelector("[class=\"Input__input--_88SI Input__themeNewbook--1IRjd Input__fontRegular--2SStp\"]");
         private readonly By _fieldPassword = By.CssSelector("[name=password]");
 
-        //IWebElement buttonLogInFooter = driver.FindElement(By.CssSelector("[class=\"Navbar__navLink--3lL7S Navbar__navLinkSingle--3x6Lx Navbar__login--28b35 \"]"));
-        //buttonLogInFooter.Click();
+        private readonly By _buttonLogIn = By.CssSelector("[type=submit]");
+        private readonly By _buttonMyAvaFooter = By.CssSelector("[class=\"AvatarClient__avatar--3TC7_\"]");
+        private readonly By _buttonLodOutAcc = By.CssSelector("[class=\"link link_type_logout link_active\"]");
 
-        //    IWebElement fieldEmailAdress = driver.FindElement(By.CssSelector("[class=\"Input__input--_88SI Input__themeNewbook--1IRjd Input__fontRegular--2SStp\"]"));
-        //fieldEmailAdress.SendKeys("newMail02112021230109@fake.com");
-
-        //    IWebElement fieldPassword = driver.FindElement(By.CssSelector("[name=password]"));
-        //fieldPassword.SendKeys("Qwerty123!");
-
-        //    IWebElement buttonLogIn = driver.FindElement(By.CssSelector("[type=submit]"));
-        //buttonLogIn.Click();
-
-        //    IWebElement buttonMyAvaFooter = driver.FindElement(By.CssSelector("[class=\"AvatarClient__avatar--3TC7_\"]"));
-        //buttonMyAvaFooter.Click();
-
-        //    IWebElement buttonLodOutAcc = driver.FindElement(By.CssSelector("[class=\"link link_type_logout link_active\"]"));
-        //buttonLodOutAcc.Click();
-
+       
         public LogOut(IWebDriver webDriver)
         {
             _driver = webDriver;
         }
-
-        //example:
-        public LogOut GoToRegistrationPages()
+       
+        public LogOut ClickButtonFooterLogIn()
         {
-            _driver.Navigate().GoToUrl("https://newbookmodels.com/");
-            _driver.FindElement(_buttonSignUp).Click();
+            _driver.FindElement(_buttonLogInFooter).Click();
+        }
+        public LogOut InputEmailAdress(string emailAdress)
+        {
+            _driver.FindElement(_fieldEmailAdress).SendKeys(emailAdress);
+            return this;
+        }
+        public LogOut InputPassword(string passwrd)
+        {
+            _driver.FindElement(_fieldPassword).SendKeys(passwrd);
             return this;
         }
 
-        public LogOut InputFirstName(string firstName)
+        public void ClickButtonLogIn() => _driver.FindElement(_buttonLogIn).Click();
+        //public void ClickLogInButton()
+        //{
+        //    _driver.FindElement(_buttonLogIn).Click();
+        //}
+        public LogOut ClickButtonMyAvaFooter()
         {
-            _driver.FindElement(_field1Name).SendKeys(firstName);
-            return this;
+            _driver.FindElement(_buttonMyAvaFooter).Click();
         }
+        public LogOut ClickNextButton()
+        {
+            _driver.FindElement(_buttonLodOutAcc).Click();
+        }
+        public void ClickOnFinishRegistration() => _driver.FindElement(_buttonLogIn).Click();
     }
 }
