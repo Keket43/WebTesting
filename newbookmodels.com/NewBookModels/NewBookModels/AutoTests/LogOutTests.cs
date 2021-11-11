@@ -28,7 +28,7 @@ namespace NewBookModels.AutoTests
         public void CheckTryLogOut()
         {
             var signInPage = new SignInPage(_driver);
-            var home = new WelcomePage(_driver);
+            var welcome = new WelcomePage(_driver);
             signInPage.GoToSignInPage()
                 .InputEmailField("Shopopalo.fake.ua")
                 .InputPasswordField("Qwerty123!")

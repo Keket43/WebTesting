@@ -50,10 +50,7 @@ namespace NewBookModels.AutoTests
 
             Assert.AreEqual(expected: $"Welcome {name}! How can we help?", welcome.CheckTryLogIn);
         }
-        // Pan Juchek Qwerty123! Qwerty123!  666.666.1312
-        //Shopopalo Shopopalo.fake.ua  2453 Lombard St, San Francisco, CA 94123, USA
-
-
+       
         [TestCase("Pan", "", "Qwerty123!", "Qwerty123!", "6666661312")]
         public void RegistrationWithEmptyLastName(string firstName, string lastName, string password, string confirmPassword, string phone)
         {
@@ -67,7 +64,24 @@ namespace NewBookModels.AutoTests
                 .InputConfirmPassword(confirmPassword)
                 .InputPhoneNumber(phone)
                 .ClickNextButton();
-            var actualResultat = registrationPage.ErrorTextAboutLastName();
+            var actualResultat = registrationPage.ErrorTextForLastName();
+
+            Assert.AreEqual(expected: "Required", actualResultat);
+        }
+        [TestCase("", "Juchek", "Qwerty123!", "Qwerty123!", "6666661312")]
+        public void RegistrationWithEmpty1Name(string firstName, string lastName, string password, string confirmPassword, string phone)
+        {
+            var registrationPage = new RegistrationPage(_driver);
+            var welcome = new WelcomePage(_driver);
+            registrationPage.GoToRegistrationPages()
+                .InputFirstName(firstName)
+                .InputLastName(lastName)
+                .InputEmail(Helper.GenEmail())
+                .InputPassword(password)
+                .InputConfirmPassword(confirmPassword)
+                .InputPhoneNumber(phone)
+                .ClickNextButton();
+            var actualResultat = registrationPage.ErrorTextForLastName();
 
             Assert.AreEqual(expected: "Required", actualResultat);
         }

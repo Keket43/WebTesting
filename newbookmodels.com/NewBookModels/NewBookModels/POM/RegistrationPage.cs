@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System.Threading;
 
-
 namespace NewBookModels.POM
 {
     class RegistrationPage
@@ -22,9 +21,9 @@ namespace NewBookModels.POM
         private readonly By _buttonIndustry = By.CssSelector("[name=industry]");       
         private readonly By _buttonFinish = By.CssSelector("[type=submit]");
 
-        private readonly By _errorByLastName = By.XPath("//div[@class='SignupFormLayout__fieldRow--bGt25']//input[@name='last_name']/../div[@class = 'FormErrorText__error---nzyq']");
-
-
+        private readonly By _errorFor1Name = By.XPath("//div[@class='SignupFormLayout__fieldRow--bGt25']//input[@name='first_name']/../div[@class = 'FormErrorText__error---nzyq']");
+        private readonly By _errorForLastName = By.XPath("//div[@class='SignupFormLayout__fieldRow--bGt25']//input[@name='last_name']/../div[@class = 'FormErrorText__error---nzyq']");
+        
         public RegistrationPage(IWebDriver webDriver)
         {
             _driver = webDriver;
@@ -117,10 +116,14 @@ namespace NewBookModels.POM
             Thread.Sleep(1000);
             _driver.FindElement(_buttonIndustry).SendKeys(Keys.Enter);
             return this;
-        }
-
+        }               
+        
         public void ClickOnFinishRegistration() => _driver.FindElement(_buttonFinish).Click();
 
-        public string ErrorTextAboutLastName() => _driver.FindElement(_errorByLastName).Text;
+        public string ErrorTextFor1Name() => _driver.FindElement(_errorBy1Name).Text;
+
+        public string ErrorTextForLastName() => _driver.FindElement(_errorByLastName).Text;
     }
+
+
 }
