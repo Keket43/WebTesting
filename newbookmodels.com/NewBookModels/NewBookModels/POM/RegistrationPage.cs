@@ -120,9 +120,9 @@ namespace NewBookModels.POM
         
         public void ClickOnFinishRegistration() => _driver.FindElement(_buttonFinish).Click();
 
-        public string ErrorTextFor1Name() => _driver.FindElement(_errorBy1Name).Text;
+        public string ErrorTextFor1Name() => _driver.FindElement(_errorFor1Name).Text;
 
-        public string ErrorTextForLastName() => _driver.FindElement(_errorByLastName).Text;
+        public string ErrorTextForLastName() => _driver.FindElement(_errorForLastName).Text;
     }
 
 
