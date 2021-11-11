@@ -2,10 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace NewBookModels.POM
 {
@@ -27,7 +24,7 @@ namespace NewBookModels.POM
         {
             _driver.Dispose();
         }
-        //в классе писали:
+       
         [Test]
         public void LoginWithWrongCredential()
         {
@@ -41,12 +38,7 @@ namespace NewBookModels.POM
 
             Assert.AreEqual(expected: "Please enter a correct email and password.", actualResultMessage);
         }
-
-        // Pan Juchek Qwerty123! Qwerty123!  666.666.1312
-        // hf679jn@email.com  14881488wp
-        //Shopopalo Shopopalo.fake.ua  2453 Lombard St, San Francisco, CA 94123, USA
-
-
+        
 
         [Test]
         public void LoginWithValidLoginAndPass()
@@ -54,12 +46,11 @@ namespace NewBookModels.POM
             var signInPage = new SignInPage(_driver);
             var welcome = new WelcomePage(_driver);
             signInPage.GoToSignInPage()
-                .InputEmailField("hf679jn@email.com")
-                .InputPasswordField("14881488wp")
+                .InputEmailField("Shopopalo.fake.ua")
+                .InputPasswordField("Qwerty123!")
                 .ClickLoginButton();
             var actualResultMessage = welcome.CheckTryLogIn;
             Assert.AreEqual(expected: "Welcome Pan! How can we help?", actualResultMessage);
-
         }
     }
 }
